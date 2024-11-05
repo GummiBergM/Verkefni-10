@@ -1,0 +1,19 @@
+{
+    "name": "verkefni-10",
+    "version": "1.0.0",
+    "description": "verkefni 10",
+    "main": "scripts.js",
+    "scripts": {
+      "dev": "browser-sync start --server --files scripts.js index.html",
+      "copy:html": "cpy ./*.gtml ./build/",
+      "build": "concurrently npm:copy:*",
+      "sass" : "sass styles.scss styles.css"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "browser-sync": "^3.0.3",
+      "sass": "^1.79.4"
+    }
+  }
+  
