@@ -9,11 +9,15 @@ const pokemonDisplay = document.querySelector(".pokemon-display");
 searchButton.addEventListener("click", () => {
   const pokemonName = searchBox.value.trim().toLowerCase();
   if (pokemonName) {
-    fetchPokemonData(pokemonName);
-    searchContainer.classList.add("clicked");
-    searchBox.value = "";
-    pokemonDisplay.classList.add("show");
-    setTimeout(() => {pokemonDisplay.classList.add("shadowbox");}, 800)
+    // Trigger fade-out effect
+    pokemonDisplay.classList.remove("show", "shadowbox");
+
+    // Delay fetching to allow fade-out to complete
+    setTimeout(() => {
+      fetchPokemonData(pokemonName);
+      searchContainer.classList.add("clicked");
+      searchBox.value = "";
+    }, 500); // Wait for the fade-out to finish
   } else {
     console.log("Please enter a Pokémon name.");
   }
@@ -51,7 +55,6 @@ function displayPokemonStats(data) {
   pokemonImage.style.width = "150px";
 
   pokemonDiv.innerHTML = `<h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>`;
-
   pokemonDiv.appendChild(pokemonImage);
 
   // Create table for type, height, and weight
@@ -83,6 +86,11 @@ function displayPokemonStats(data) {
   // Append all elements to displayDiv
   displayDiv.appendChild(pokemonDiv);
   displayDiv.appendChild(table);
+
+  // Trigger fade-in effect after setting new data
+  setTimeout(() => {
+    pokemonDisplay.classList.add("show", "shadowbox");
+  }, 10); // Small delay to ensure opacity transition
 }
 
 // Function to fetch the evolution chain data from the species endpoint
@@ -111,12 +119,21 @@ function fetchEvolutionChain(speciesUrl) {
 
 // Function to recursively display each Pokémon in the evolution chain
 function displayEvolutionChain(evolution) {
+  // Clear previous evolution content if any
+  const existingEvolutionContainer = document.querySelector(".evolution-container");
+  if (existingEvolutionContainer) {
+    existingEvolutionContainer.remove();
+  }
+
   const evolutionDiv = document.createElement("div");
+  evolutionDiv.className = "evolution-container";
   evolutionDiv.innerHTML = "<h3>Related Pokémon:</h3>";
 
+  // Function to fetch and display each evolution stage
   const fetchEvolutionImages = (evoStage) => {
     if (!evoStage) return;
 
+    // Fetch data for the current evolution stage Pokémon
     fetch(`https://pokeapi.co/api/v2/pokemon/${evoStage.species.name}`)
       .then((response) => response.json())
       .then((pokemonData) => {
@@ -125,8 +142,6 @@ function displayEvolutionChain(evolution) {
         const evoImage = document.createElement("img");
         evoImage.src = pokemonData.sprites.front_default;
         evoImage.alt = `${evoStage.species.name} image`;
-        evoImage.style.width = "100px";
-        evoImage.style.marginRight = "10px";
 
         const evoName = document.createElement("p");
         evoName.textContent = evoStage.species.name;
@@ -135,13 +150,20 @@ function displayEvolutionChain(evolution) {
         evoElement.appendChild(evoName);
         evolutionDiv.appendChild(evoElement);
 
-        if (evoStage.evolves_to.length > 0) {
-          fetchEvolutionImages(evoStage.evolves_to[0]); // Fetch next evolution in the chain
-        }
+        // Continue fetching for next evolutions if available
+        evoStage.evolves_to.forEach((nextEvo) => fetchEvolutionImages(nextEvo));
       })
       .catch((error) => console.error("Error fetching evolution data:", error));
   };
 
-  fetchEvolutionImages(evolution); // Start with the first stage in the evolution chain
+  // Start by displaying the first Pokémon in the chain
+  fetchEvolutionImages(evolution);
+
+  // Append the evolution container to the displayDiv
   displayDiv.appendChild(evolutionDiv);
+
+  // Add shadow effect to the newly created evolution container after a delay
+  setTimeout(() => {
+    evolutionDiv.classList.add("shadowbox");
+  }, 800);
 }

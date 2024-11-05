@@ -1,45 +1,11 @@
-@media (min-width: 700px) {
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 20px;
-    height: calc(100vh - 100px);
-  }
-  .card {
-    padding: 20px;
-    border-radius: 30px;
-    justify-content: center;
-    border: 1px solid black;
-  }
-  .onebox {
-    display: grid;
-    grid-column: span 1;
-  }
-  .twobox {
-    display: grid;
-    grid-column: span 2;
-  }
-  .threebox {
-    display: grid;
-    grid-column: span 3;
-  }
-}
 button {
   border-radius: 20px;
-  background-color: white;
   border: none;
-  color: black;
   width: 50%;
   padding: 10px 0;
   max-width: 300px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease-out;
-}
-
-button:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
 
 .search-container {
@@ -48,18 +14,31 @@ button:hover {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 100px;
+  margin-top: 30vh;
   transition: margin-top, 1s ease-in-out;
 }
 .search-container h1 {
   margin: 0;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   transition: margin-top, 1s ease-in-out;
 }
 .search-container input {
-  width: 70%;
+  background: none;
+  width: auto;
   border: 0px;
   text-align: center;
+  user-select: none;
+  outline: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  transition: border-bottom 0.2s ease-in-out;
+}
+.search-container input:focus {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+@media (prefers-color-scheme: dark) {
+  .search-container input:focus {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
 }
 
 .clicked {
@@ -69,6 +48,12 @@ button:hover {
   margin-bottom: 10px;
 }
 
+@media (min-width: 900px) {
+  button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.6);
+  }
+}
 @font-face {
   font-family: "Dosis";
   src: url(../fonts/Dosis-VariableFont_wght.ttf) format(woff2);
@@ -80,6 +65,7 @@ h4,
 p,
 button,
 input,
+table,
 a {
   font-family: "Dosis";
 }
@@ -114,8 +100,56 @@ input {
 
 a {
   font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+@media (prefers-color-scheme: dark) {
+  a {
+    color: white;
+  }
 }
 
+body {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+body {
+  background-color: white;
+  color: black;
+}
+body button {
+  background-color: rgba(0, 0, 0, 0.02);
+  color: black;
+}
+body .pokemon-display {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+body .evolution-container {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Dark mode when device is set to dark */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #242424;
+    color: white;
+  }
+  body button {
+    background-color: rgba(255, 255, 255, 0.02);
+    color: white;
+  }
+  body .pokemon-display {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  body .evolution-container {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  body input {
+    color: white;
+  }
+}
 .pokemon-display {
   display: flex;
   align-items: center;
@@ -128,12 +162,48 @@ a {
   transition: opacity 0.5s ease-in-out, box-shadow 0.8s ease-out;
 }
 
+.pokemon-display.shadowbox {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
 .show {
   opacity: 1;
 }
 
-.shadowbox {
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+table {
+  width: 90%;
+  max-width: 220px;
+}
+
+.evolution-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  width: 90%;
+  margin: 20px 10px;
+  transition: box-shadow 0.8s ease-out, background-color 0.8s ease-out;
+}
+.evolution-container img {
+  width: 100%;
+  max-width: 120px;
+}
+.evolution-container div {
+  grid-column: span 1;
+}
+.evolution-container h3 {
+  grid-column: span 2;
+}
+
+.evolution-container.shadowbox {
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  .evolution-container.shadowbox {
+    background-color: #242424;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

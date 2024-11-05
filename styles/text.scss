@@ -10,6 +10,7 @@ h4,
 p,
 button,
 input,
+table,
 a {
   font-family: "Dosis";
 }
@@ -44,4 +45,10 @@ input {
 
 a {
   font-weight: 600;
+  text-decoration: none;
+  color: black;
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
 }
