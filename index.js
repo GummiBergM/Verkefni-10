@@ -23,6 +23,13 @@ searchButton.addEventListener("click", () => {
   }
 });
 
+// Trigger search on Enter key press in the input box
+searchBox.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    searchButton.click(); // Triggers the click event on the search button
+  }
+});
+
 // Function to fetch basic Pokémon data
 function fetchPokemonData(pokemonName) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
