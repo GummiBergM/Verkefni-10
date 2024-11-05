@@ -5,18 +5,27 @@
 
 h1,
 h2,
+h3,
+h4,
 p,
 button,
+input,
 a {
   font-family: "Dosis";
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 36px;
 }
 
 h2 {
   font-weight: 600;
+  font-size: 28px;
+}
+
+h3 {
+  font-weight: 500;
 }
 
 p {
@@ -24,7 +33,13 @@ p {
 }
 
 button {
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+input {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 a {

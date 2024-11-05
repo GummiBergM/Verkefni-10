@@ -10,7 +10,6 @@
   .card {
     padding: 20px;
     border-radius: 30px;
-    xopacity: 0;
     justify-content: center;
     border: 1px solid black;
   }
@@ -29,8 +28,4 @@
     display: grid;
     grid-column: span 3;
   }
-}
-
-.visible {
-  opacity: 1;
 }

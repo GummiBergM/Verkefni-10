@@ -1,0 +1,20 @@
+.pokemon-display {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 30px;
+  margin-top: 40px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, box-shadow 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+}
+
+.shadowbox {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
