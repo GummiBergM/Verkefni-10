@@ -191,12 +191,34 @@ body .evolution-container {
 }
 
 table {
-  width: 100%;
-  max-width: 220px;
+  width: auto;
+  max-width: 100%;
   margin: 0 auto;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #f1444c;
+  color: white;
 }
 table td {
   padding: 0 10px;
+}
+
+.abilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+  gap: 10px;
+}
+.abilities h3,
+.abilities p {
+  margin: 0;
+}
+.abilities h3 {
+  text-align: right;
+}
+.abilities p {
+  text-align: left;
 }
 
 .evolution-container {
@@ -233,14 +255,6 @@ table td {
 @media (min-width: 900px) {
   body {
     max-width: 800px;
-  }
-  table {
-    max-width: 250px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 20px;
-    background-color: #f1444c;
-    color: white;
   }
   .pokemon-display {
     display: grid;

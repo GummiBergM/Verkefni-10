@@ -6,9 +6,16 @@ const searchContainer = document.querySelector(".search-container");
 const pokemonDisplay = document.querySelector(".pokemon-display");
 
 // Main search function triggered on button click
+// Main search function triggered on button click
 searchButton.addEventListener("click", () => {
   const pokemonName = searchBox.value.trim().toLowerCase();
   if (pokemonName) {
+    // Smooth scroll to the top of the page
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     // Trigger fade-out effect
     pokemonDisplay.classList.remove("show", "shadowbox");
 
@@ -17,7 +24,7 @@ searchButton.addEventListener("click", () => {
       fetchPokemonData(pokemonName);
       searchContainer.classList.add("clicked");
       searchBox.value = "";
-    }, 500); // Wait for the fade-out to finish
+    }, 500);
   } else {
     console.log("Please enter a Pokémon name.");
   }
@@ -63,7 +70,9 @@ function displayPokemonStats(data) {
   pokemonImage.alt = `${data.name} image`;
   pokemonImage.style.width = "150px";
 
-  pokemonDiv.innerHTML = `<h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>`;
+  pokemonDiv.innerHTML = `<h2>${
+    data.name.charAt(0).toUpperCase() + data.name.slice(1)
+  }</h2>`;
   pokemonDiv.appendChild(pokemonImage);
 
   // Create table for type, height, and weight
@@ -71,7 +80,7 @@ function displayPokemonStats(data) {
 
   // Create table headers
   const headerRow = document.createElement("tr");
-  ["Type", "Height", "Weight"].forEach(headerText => {
+  ["Type", "Height", "Weight"].forEach((headerText) => {
     const th = document.createElement("th");
     th.textContent = headerText;
     headerRow.appendChild(th);
@@ -79,13 +88,13 @@ function displayPokemonStats(data) {
   table.appendChild(headerRow);
 
   // Get values for the table row
-  const type = data.types.map(t => t.type.name).join(", ");
+  const type = data.types.map((t) => t.type.name).join(", ");
   const height = `${data.height * 10} cm`; // Convert to cm
   const weight = `${data.weight / 10} kg`; // Convert to kg
 
   // Create table row for Pokémon's stats
   const dataRow = document.createElement("tr");
-  [type, height, weight].forEach(value => {
+  [type, height, weight].forEach((value) => {
     const td = document.createElement("td");
     td.textContent = value;
     dataRow.appendChild(td);
@@ -94,6 +103,20 @@ function displayPokemonStats(data) {
 
   // Append the table inside the pokemonDiv (pokemon-container)
   pokemonDiv.appendChild(table);
+
+  const abilityDiv = document.createElement("div");
+  abilityDiv.className = "abilities";
+  abilityDiv.innerHTML = "<h3>Abilities:</h3>";
+
+  const abilities = document.createElement("div");
+  data.abilities.forEach((ability) => {
+    const abilityName = document.createElement("p");
+    abilityName.textContent = ability.ability.name;
+    abilities.appendChild(abilityName);
+  });
+
+  abilityDiv.appendChild(abilities);
+  pokemonDiv.appendChild(abilityDiv);
 
   // Append pokemonDiv to the displayDiv
   displayDiv.appendChild(pokemonDiv);
@@ -131,7 +154,9 @@ function fetchEvolutionChain(speciesUrl) {
 // Function to recursively display each Pokémon in the evolution chain
 function displayEvolutionChain(evolution) {
   // Clear previous evolution content if any
-  const existingEvolutionContainer = document.querySelector(".evolution-container");
+  const existingEvolutionContainer = document.querySelector(
+    ".evolution-container"
+  );
   if (existingEvolutionContainer) {
     existingEvolutionContainer.remove();
   }

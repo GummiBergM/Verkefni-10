@@ -69,12 +69,38 @@ body {
 }
 
 table {
-  width: 100%;
-  max-width: 220px;
+  width: auto;
+  max-width: 100%;
 
   margin: 0 auto;
   td {
     padding: 0 10px;
+  }
+
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #f1444c;
+  color: white;
+}
+
+.abilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+  gap: 10px;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    text-align: right;
+  }
+
+  p {
+    text-align: left;
   }
 }
 
@@ -115,15 +141,6 @@ table {
 @media (min-width: 900px) {
   body {
     max-width: 800px;
-  }
-
-  table {
-    max-width: 250px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 20px;
-    background-color: #f1444c;
-    color: white;
   }
 
   .pokemon-display {
