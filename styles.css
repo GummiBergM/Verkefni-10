@@ -256,7 +256,7 @@ table td {
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   body {
     max-width: 800px;
   }
@@ -267,6 +267,17 @@ table td {
   .pokemon-container {
     margin: 30px 0px;
     align-self: start;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    max-width: 1100px;
+  }
+  .evolution-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .evolution-container h3 {
+    grid-column: span 3;
   }
 }
 
