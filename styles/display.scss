@@ -127,6 +127,11 @@ table {
   h3 {
     grid-column: span 2;
   }
+
+  p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .evolution-container.shadowbox {

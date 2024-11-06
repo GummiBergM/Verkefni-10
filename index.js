@@ -154,9 +154,7 @@ function fetchEvolutionChain(speciesUrl) {
 // Function to recursively display each Pokémon in the evolution chain
 function displayEvolutionChain(evolution) {
   // Clear previous evolution content if any
-  const existingEvolutionContainer = document.querySelector(
-    ".evolution-container"
-  );
+  const existingEvolutionContainer = document.querySelector(".evolution-container");
   if (existingEvolutionContainer) {
     existingEvolutionContainer.remove();
   }
@@ -181,6 +179,12 @@ function displayEvolutionChain(evolution) {
 
         const evoName = document.createElement("p");
         evoName.textContent = evoStage.species.name;
+        evoName.classList.add("clickable");
+        
+        // Add click event to fetch and display the clicked Pokémon's data
+        evoName.addEventListener("click", () => {
+          fetchPokemonData(evoStage.species.name); // Fetches data for the clicked Pokémon
+        });
 
         evoElement.appendChild(evoImage);
         evoElement.appendChild(evoName);
