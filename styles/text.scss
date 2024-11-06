@@ -13,6 +13,7 @@ input,
 table,
 a {
   font-family: "Dosis";
+  transition: font-size 0.5s ease-in-out;
 }
 
 h1 {
@@ -51,4 +52,31 @@ a {
   @media (prefers-color-scheme: dark) {
     color: white;
   }
+}
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 54px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 28px;
+  }
+
+  input {
+    font-size: 24px;
+  }
+  
 }

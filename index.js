@@ -46,9 +46,11 @@ function fetchPokemonData(pokemonName) {
     .catch((error) => {
       console.error("Error fetching data:", error);
       displayDiv.innerHTML = "<p>Pokémon not found! Try a different name.</p>";
+      pokemonDisplay.classList.add("show", "shadowbox");
     });
 }
 
+// Function to display Pokémon's image and basic stats
 // Function to display Pokémon's image and basic stats
 function displayPokemonStats(data) {
   displayDiv.innerHTML = ""; // Clear previous content
@@ -90,9 +92,11 @@ function displayPokemonStats(data) {
   });
   table.appendChild(dataRow);
 
-  // Append all elements to displayDiv
+  // Append the table inside the pokemonDiv (pokemon-container)
+  pokemonDiv.appendChild(table);
+
+  // Append pokemonDiv to the displayDiv
   displayDiv.appendChild(pokemonDiv);
-  displayDiv.appendChild(table);
 
   // Trigger fade-in effect after setting new data
   setTimeout(() => {

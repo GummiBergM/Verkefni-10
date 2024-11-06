@@ -3,9 +3,8 @@ button {
   border: none;
   width: 50%;
   padding: 10px 0;
-  max-width: 300px;
+  max-width: 200px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.2s ease-out;
 }
 
 .search-container {
@@ -30,7 +29,7 @@ button {
   user-select: none;
   outline: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0);
-  transition: border-bottom 0.2s ease-in-out;
+  transition: border-bottom 0.2s ease-in-out, font-size 0.5s ease-in-out;
 }
 .search-container input:focus {
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
@@ -68,6 +67,7 @@ input,
 table,
 a {
   font-family: "Dosis";
+  transition: font-size 0.5s ease-in-out;
 }
 
 h1 {
@@ -109,6 +109,26 @@ a {
   }
 }
 
+@media (min-width: 900px) {
+  h1 {
+    font-size: 54px;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 20px;
+  }
+  button {
+    font-size: 28px;
+  }
+  input {
+    font-size: 24px;
+  }
+}
 body {
   max-width: 400px;
   margin: 20px auto;
@@ -120,8 +140,12 @@ body {
   color: black;
 }
 body button {
-  background-color: rgba(0, 0, 0, 0.02);
-  color: black;
+  background-color: #f1444c;
+  color: white;
+  transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out, font-size 0.5s ease-in-out;
+}
+body button:hover {
+  background-color: #ef6369;
 }
 body .pokemon-display {
   background-color: rgba(0, 0, 0, 0.02);
@@ -134,10 +158,6 @@ body .evolution-container {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #242424;
-    color: white;
-  }
-  body button {
-    background-color: rgba(255, 255, 255, 0.02);
     color: white;
   }
   body .pokemon-display {
@@ -171,8 +191,12 @@ body .evolution-container {
 }
 
 table {
-  width: 90%;
+  width: 100%;
   max-width: 220px;
+  margin: 0 auto;
+}
+table td {
+  padding: 0 10px;
 }
 
 .evolution-container {
@@ -203,6 +227,28 @@ table {
 @media (prefers-color-scheme: dark) {
   .evolution-container.shadowbox {
     background-color: #242424;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    max-width: 800px;
+  }
+  table {
+    max-width: 250px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f1444c;
+    color: white;
+  }
+  .pokemon-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pokemon-container {
+    margin: 30px 0px;
+    align-self: start;
   }
 }
 
