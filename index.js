@@ -180,7 +180,7 @@ function displayEvolutionChain(evolution) {
         evoName.classList.add("clickable");
         
         // Add click event to fetch and display the clicked Pokémon's data
-        evoName.addEventListener("click", () => {
+        evoElement.addEventListener("click", () => {
           fetchPokemonData(evoStage.species.name); // Fetches data for the clicked Pokémon
         });
 

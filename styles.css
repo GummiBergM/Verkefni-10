@@ -230,6 +230,7 @@ table td {
   width: 90%;
   margin: 20px 10px;
   transition: box-shadow 0.8s ease-out, background-color 0.8s ease-out;
+  padding: 10px;
 }
 .evolution-container img {
   width: 100%;
@@ -237,13 +238,12 @@ table td {
 }
 .evolution-container div {
   grid-column: span 1;
+  border-radius: 10px;
+  text-decoration: underline solid transparent;
+  transition: background-color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
 }
 .evolution-container h3 {
   grid-column: span 2;
-}
-.evolution-container p:hover {
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .evolution-container.shadowbox {
@@ -267,6 +267,16 @@ table td {
   .pokemon-container {
     margin: 30px 0px;
     align-self: start;
+  }
+  .evolution-container > div:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+@media (min-width: 700px) and (prefers-color-scheme: dark) {
+  .evolution-container > div:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 @media (min-width: 1200px) {
