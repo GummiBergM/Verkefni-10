@@ -6,7 +6,6 @@ const searchContainer = document.querySelector(".search-container");
 const pokemonDisplay = document.querySelector(".pokemon-display");
 
 // Main search function triggered on button click
-// Main search function triggered on button click
 searchButton.addEventListener("click", () => {
   const pokemonName = searchBox.value.trim().toLowerCase();
   if (pokemonName) {
@@ -33,7 +32,7 @@ searchButton.addEventListener("click", () => {
 // Trigger search on Enter key press in the input box
 searchBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
-    searchButton.click(); // Triggers the click event on the search button
+    searchButton.click();
   }
 });
 
@@ -57,7 +56,6 @@ function fetchPokemonData(pokemonName) {
     });
 }
 
-// Function to display Pokémon's image and basic stats
 // Function to display Pokémon's image and basic stats
 function displayPokemonStats(data) {
   displayDiv.innerHTML = ""; // Clear previous content
